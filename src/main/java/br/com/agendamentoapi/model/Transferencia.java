@@ -27,17 +27,4 @@ public class Transferencia {
 
     private LocalDate dataTransferencia;
     private LocalDate dataAgendamento;
-
-    public Transferencia(TransferenciaDto transferenciaDto) {
-        this.id = transferenciaDto.getId();
-        this.contaOrigem = transferenciaDto.getContaOrigem();
-        this.contaDestino = transferenciaDto.getContaDestino();
-        this.valor = transferenciaDto.getValor();
-        this.taxa = transferenciaDto.getTaxa();
-        this.valorTotal = transferenciaDto.getValorTotal();
-        this.dataTransferencia = transferenciaDto.getDataTransferencia();
-        this.dataAgendamento = transferenciaDto.getDataAgendamento();
-    }
-
-    public Transferencia() {}
 }

@@ -5,6 +5,7 @@ import br.com.agendamentoapi.model.Transferencia;
 import br.com.agendamentoapi.repository.TransferenciaRepository;
 import br.com.agendamentoapi.util.CalculadoraTaxa;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -17,10 +18,11 @@ public class TransferenciaService {
 
     private final TransferenciaRepository repository;
     private final CalculadoraTaxa calculadoraTaxa;
+    private final ModelMapper modelMapper;
 
     public TransferenciaDto agendar(TransferenciaDto dto) {
 
-        Transferencia transferencia = new Transferencia(dto);
+        Transferencia transferencia = modelMapper.map(dto, Transferencia.class);
 
         transferencia.setDataAgendamento(LocalDate.now());
 
@@ -39,7 +41,7 @@ public class TransferenciaService {
 
         Transferencia salva = repository.save(transferencia);
 
-        return new TransferenciaDto(salva);
+        return modelMapper.map(salva, TransferenciaDto.class);
     }
 
 }

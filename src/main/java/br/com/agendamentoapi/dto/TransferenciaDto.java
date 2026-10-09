@@ -1,6 +1,5 @@
 package br.com.agendamentoapi.dto;
 
-import br.com.agendamentoapi.model.Transferencia;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -43,18 +42,4 @@ public class TransferenciaDto {
     private LocalDate dataTransferencia;
 
     private LocalDate dataAgendamento;
-
-    public TransferenciaDto() {
-    }
-
-    public TransferenciaDto(Transferencia transferencia) {
-        this.id = transferencia.getId();
-        this.contaOrigem = transferencia.getContaOrigem();
-        this.contaDestino = transferencia.getContaDestino();
-        this.valor = transferencia.getValor();
-        this.taxa = transferencia.getTaxa();
-        this.valorTotal = transferencia.getValorTotal();
-        this.dataTransferencia = transferencia.getDataTransferencia();
-        this.dataAgendamento = transferencia.getDataAgendamento();
-    }
 }
