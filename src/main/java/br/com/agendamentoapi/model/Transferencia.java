@@ -1,6 +1,5 @@
 package br.com.agendamentoapi.model;
 
-import br.com.agendamentoapi.dto.TransferenciaDto;
 import lombok.Data;
 
 import javax.persistence.Entity;
