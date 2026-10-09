@@ -47,15 +47,10 @@ public class TransferenciaService {
         return modelMapper.map(salva, TransferenciaDto.class);
     }
 
-
     public List<TransferenciaDto> listarTodos() {
-        return repository.findAll()
+        return repository.findAllByOrderByDataAgendamentoDesc()
                 .stream()
-                .sorted(Comparator.comparing(
-                        Transferencia::getDataAgendamento,
-                        Comparator.reverseOrder()))
-                .map(transferencia ->
-                        modelMapper.map(transferencia, TransferenciaDto.class))
-                .collect(Collectors.toList());
+                .map(transferencia -> modelMapper.map(transferencia, TransferenciaDto.class))
+                .toList();
     }
 }
