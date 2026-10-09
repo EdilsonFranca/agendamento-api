@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -44,4 +47,15 @@ public class TransferenciaService {
         return modelMapper.map(salva, TransferenciaDto.class);
     }
 
+
+    public List<TransferenciaDto> listarTodos() {
+        return repository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(
+                        Transferencia::getDataAgendamento,
+                        Comparator.reverseOrder()))
+                .map(transferencia ->
+                        modelMapper.map(transferencia, TransferenciaDto.class))
+                .collect(Collectors.toList());
+    }
 }
