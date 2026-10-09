@@ -44,6 +44,9 @@ public class TransferenciaDto {
 
     private LocalDate dataAgendamento;
 
+    public TransferenciaDto() {
+    }
+
     public TransferenciaDto(Transferencia transferencia) {
         this.id = transferencia.getId();
         this.contaOrigem = transferencia.getContaOrigem();
