@@ -89,13 +89,14 @@ API REST para agendamento de transferências bancárias, desenvolvida com Java e
 
 A taxa é calculada de acordo com a quantidade de dias entre o agendamento e a data da transferência.
 
-| Antecedência | Taxa aplicada |
+| Quantidade de dias | Taxa aplicada |
 |---|---|
-| 0 a 10 dias | 2,5% do valor + R$ 12,00 |
-| 11 a 20 dias | Sem taxa |
-| 21 a 30 dias | 8,2% do valor |
-| 31 a 40 dias | 6,9% do valor |
-| 41 a 50 dias | 4,7% do valor |
+| 0           | 2,5% do valor + R$ 3,00 |
+| 1 a 10 dias |  R$ 12,00 |
+| 11 a 20 dias | 8,2%  do valor|
+| 21 a 30 dias | 6,9% do valor|
+| 31 a 40 dias | 4,7% do valor |
+| 41 a 50 dias | 1,7% do valor |
 | Negativa ou superior a 50 dias | Agendamento não permitido |
 
 O valor total da transferência é calculado somando o valor informado à taxa correspondente. Os valores monetários são arredondados para duas casas decimais.

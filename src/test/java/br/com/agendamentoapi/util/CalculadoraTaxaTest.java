@@ -18,10 +18,25 @@ class CalculadoraTaxaTest {
     }
 
     @Test
+    void deveCalcularTaxaQuandoTransferenciaForNoMesmoDia() {
+        BigDecimal valorTransferencia = new BigDecimal("1000.00");
+        long diasAteTransferencia = 0;
+        BigDecimal taxaEsperada = new BigDecimal("28.00");
+
+        BigDecimal taxaCalculada = calculadoraTaxa.calcular(
+                valorTransferencia,
+                diasAteTransferencia
+        );
+
+        assertEquals(taxaEsperada, taxaCalculada);
+    }
+
+
+    @Test
     void deveCalcularTaxaAte10Dias() {
         BigDecimal valorTransferencia = new BigDecimal("1000.00");
         long diasAteTransferencia = 10;
-        BigDecimal taxaEsperada = new BigDecimal("37.00");
+        BigDecimal taxaEsperada = new BigDecimal("12.00");
 
         BigDecimal taxaCalculada = calculadoraTaxa.calcular(
                 valorTransferencia,
@@ -35,7 +50,7 @@ class CalculadoraTaxaTest {
     void deveCalcularTaxaDe11A20Dias() {
         BigDecimal valorTransferencia = new BigDecimal("1000.00");
         long diasAteTransferencia = 15;
-        BigDecimal taxaEsperada = new BigDecimal("0.00");
+        BigDecimal taxaEsperada = new BigDecimal("82.00");
 
         BigDecimal taxaCalculada = calculadoraTaxa.calcular(
                 valorTransferencia,
@@ -49,7 +64,7 @@ class CalculadoraTaxaTest {
     void deveCalcularTaxaDe21A30Dias() {
         BigDecimal valorTransferencia = new BigDecimal("1000.00");
         long diasAteTransferencia = 25;
-        BigDecimal taxaEsperada = new BigDecimal("82.00");
+        BigDecimal taxaEsperada = new BigDecimal("69.00");
 
         BigDecimal taxaCalculada = calculadoraTaxa.calcular(
                 valorTransferencia,
@@ -63,7 +78,7 @@ class CalculadoraTaxaTest {
     void deveCalcularTaxaDe31A40Dias() {
         BigDecimal valorTransferencia = new BigDecimal("1000.00");
         long diasAteTransferencia = 35;
-        BigDecimal taxaEsperada = new BigDecimal("69.00");
+        BigDecimal taxaEsperada = new BigDecimal("47.00");
 
         BigDecimal taxaCalculada = calculadoraTaxa.calcular(
                 valorTransferencia,
@@ -77,21 +92,7 @@ class CalculadoraTaxaTest {
     void deveCalcularTaxaDe41A50Dias() {
         BigDecimal valorTransferencia = new BigDecimal("1000.00");
         long diasAteTransferencia = 45;
-        BigDecimal taxaEsperada = new BigDecimal("47.00");
-
-        BigDecimal taxaCalculada = calculadoraTaxa.calcular(
-                valorTransferencia,
-                diasAteTransferencia
-        );
-
-        assertEquals(taxaEsperada, taxaCalculada);
-    }
-
-    @Test
-    void deveCalcularTaxaQuandoTransferenciaForNoMesmoDia() {
-        BigDecimal valorTransferencia = new BigDecimal("1000.00");
-        long diasAteTransferencia = 0;
-        BigDecimal taxaEsperada = new BigDecimal("37.00");
+        BigDecimal taxaEsperada = new BigDecimal("17.00");
 
         BigDecimal taxaCalculada = calculadoraTaxa.calcular(
                 valorTransferencia,
@@ -104,7 +105,7 @@ class CalculadoraTaxaTest {
     @Test
     void deveArredondarTaxaParaDuasCasasDecimais() {
         BigDecimal valorTransferencia = new BigDecimal("100.01");
-        long diasAteTransferencia = 30;
+        long diasAteTransferencia = 15;
         BigDecimal taxaEsperada = new BigDecimal("8.20");
 
         BigDecimal taxaCalculada = calculadoraTaxa.calcular(

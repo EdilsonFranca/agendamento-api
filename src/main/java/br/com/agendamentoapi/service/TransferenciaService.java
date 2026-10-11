@@ -65,8 +65,7 @@ public class TransferenciaService {
                 ))
                 .toList();
 
-        log.info("Consulta de transferências concluída. quantidade={}",
-                transferencias.size());
+        log.info("Consulta de transferências concluída. quantidade={}", transferencias.size());
 
         return transferencias;
     }
